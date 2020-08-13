@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+   - 14
+
+deploy:
+    skip_cleanup: true
+    - provider: s3
+        # rest of S3 deployment for MyApp.zip
+        # ⋮
+    - provider: codedeploy
+        access_key_id: "AKIAXLYL37FZNT7WZXWJ"
+        secret_access_key: "MxzjXDsC83A54MjAx8pNa1i+4zCXluskX6rrc+ye91xeSQnT9W+szlm7Nlg2FabidivdtC/0T5054hp0vZ1HtBXBEzHIDf3SSQHGeXxOBFK5UDgvihVK5Dw/YwAYAxGmV2h1PinWFERJP5OflgwwweNv3kxZauP6J1Dq2TvF+LtzFy4k8YpjijDyBL7W1n6RCzRNwdsm+7gQea5Cw8IW/3ip8JLjGPEAcBtoYntA0PjFqtYszaPOrsSkxx5Xa6SyMPf5gcGS2AOV5w8w4+wQ1LDb7I7DCh9YxvSYJ1fwigCo2QVFU5qoOTPja/NY+AJFLmWlD7EjcsmDg8I0LyOl4TercjVke/+0YJn3H+q/gIEqX+ZxyWLDbb5xybg5d0QeZQVts+WTkhj8F/AOyCHl5k2EkcQw6JziPn9xhSykyqk1hK5/U+b0QtDXObqcvPyWmQlUEdlJV0c/WjgTlNchdw2UtBKdH3b7QHTKfB6sUOWz6/2+vFJ3JTOBxUFSTjRFgRjXMntMPIghGTijuo2KFgSDGwosIb30iusIV/SGOGV5LxnhvIAJZUt3dFHemE/Wf1/GPMPZT6qNqzrC7rsbTn5ycVopaO4zwv9atPBEQhKyXxq+FFzeGd9B3TjZ8Oqk0iihzaDh2+jXGgYgxQ6/U2zuKxQEj7n0wO4YG0fUiNs="
+        bucket: "S3 Bucket"
+        key: latest/MyApp.zip
+        application: "duocun-log-api"
+        deployment_group: "duocun-deploy-group"
+        region: us-east-1
