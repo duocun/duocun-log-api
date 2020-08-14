@@ -24,7 +24,7 @@ os: linux
 #   may cause associated deployments to fail.
 files:
   - source: ./
-    destination: /home/ubuntu/duocun-log-api
+    destination: /home/ubuntu/duocun-log-api-dev
 #   - source:
 #     destination:
 # # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
