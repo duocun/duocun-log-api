@@ -9,12 +9,17 @@ deploy:
     secret_access_key: $AWS_SECRET_ACCESS_KEY 
     bucket: "duocun-log-api"
     region: us-east-1
-
+    on: &2
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY_ID
     secret_access_key: $AWS_SECRET_ACCESS_KEY
     bucket: "duocun-log-api"
-    key: latest/MyApp.zip
+    key: latest.zip
+    bundle_type: zip
     application: "duocun-log-api"
     deployment_group: "duocun-deploy-group"
     region: us-east-1
+    on: *2
+
+script:
+    - zip -r latest *
