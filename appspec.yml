@@ -106,10 +106,10 @@ files:
 #       runas:
 # # During the ApplicationStart deployment lifecycle event, run the commands 
 # #   in the script specified in "location".
-  ApplicationStart:
-    - location: /home/ubuntu/duocun-log-api.sh   
-      timeout: 30
-      runas: root
+#   ApplicationStart:
+#     - location: /home/ubuntu/duocun-log-api.sh   
+#       timeout: 30
+#       runas: root
 #     - location: 
 #       timeout:
 #       runas:
