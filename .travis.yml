@@ -2,8 +2,7 @@ language: node_js
 node_js:
    - 14
 
-branches:
-    - develop
+
 
 cache:
     directories:
@@ -14,10 +13,15 @@ deploy:
     secret_access_key: $AWS_SECRET_ACCESS_KEY
     local_dir: dpl_cd_upload 
     skip_cleanup: true
-    repo: duocun/duocun-log-api
+    
     bucket: "duocun-log-api"
     region: us-east-1
-    on: &2
+    on:
+        repo: duocun/duocun-log-api
+        branches:
+            only:
+                - develop
+
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY_ID
     secret_access_key: $AWS_SECRET_ACCESS_KEY
@@ -27,7 +31,6 @@ deploy:
     application: "duocun-log-api"
     deployment_group: "duocun-deploy-group"
     region: us-east-1
-    on: *2
 
 script:
     - zip -r latest *
