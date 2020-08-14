@@ -16,7 +16,7 @@ deploy:
     
     bucket: "duocun-log-api"
     region: us-east-1
-    on:
+    on: &2
         repo: duocun/duocun-log-api
         branch: develop
 
@@ -29,6 +29,7 @@ deploy:
     application: "duocun-log-api"
     deployment_group: "duocun-deploy-group"
     region: us-east-1
+    on: *2
 
 script:
     - zip -r latest *
