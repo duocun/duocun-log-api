@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
 export class Model {
-    MongooseModel: mongoose.Model<any>;
+    MongooseModel; // mongoose.Model<any>;
 
-    constructor(definition, name){
+    constructor(name, definition){
         const Schema = new mongoose.Schema(definition, {versionKey: false});
         this.MongooseModel = mongoose.model(name, Schema);
     }
 
     create(data){
         const model = new this.MongooseModel(data);
-        return model.save();
+        model.save();
     }
 
     find(query, projection=null, options=null){

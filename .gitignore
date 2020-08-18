@@ -104,6 +104,9 @@ dist
 .tern-port
 
 .env
+.env.Local
+.env.development
+.env.production
 .project
 .vscode
 package-lock.json

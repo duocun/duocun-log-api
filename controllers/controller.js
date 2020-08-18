@@ -1,5 +1,5 @@
-import {Request, Response} from "express";
-import { Model } from "../models/model";
+// import {Request, Response} from "express";
+// import { Model } from "../models/model.js";
 // import { DB } from "../db";
 
 // import path from 'path';
@@ -7,7 +7,7 @@ import { Model } from "../models/model";
 
 // const logger = getLogger(path.basename(__filename));
 
-import * as moment from  'moment';
+import moment from  'moment';
 
 export const Code = {
   SUCCESS: 'success',
@@ -15,31 +15,31 @@ export const Code = {
 }
 
 export class Controller {
-  public model: Model;
-  constructor(model: any) {
+  model;
+
+  constructor(model) {
     this.model = model;
   }
 
-  async create(req:Request, res: Response){
-    const activity: any = req.body;
-    activity.created = moment.utc().toISOString();
-    const r: any = await this.model.create(activity);
+  async create(req, res){
+    const d = req.body;
+    const data = await this.model.create(d);
 
     res.setHeader('Content-Type', 'application/json');
-    res.send({code: 'success'});
+    res.send({code: 'success', data});
   }
 
-  async find(req:Request, res: Response){
-    const r: any = await this.model.find({});
+  async find(req, res){
+    const data = await this.model.find({});
 
     res.setHeader('Content-Type', 'application/json');
-    res.send({code: 'success'});
+    res.send({code: 'success', data});
   }
 
 
 //   async list(req: Request, res: Response):Promise<void> { 
-//     const where: any = req.query.where;
-//     const options: any = req.query.options;
+//     const where = req.query.where;
+//     const options = req.query.options;
 //     let data:any[] = [];
 //     let count:number = 0;
 //     let code = Code.FAIL;
@@ -73,7 +73,7 @@ export class Controller {
 //     const id = req.params.id;
 //     let data:any = {};
 //     let code = Code.FAIL;
-//     const options: any = ( req.query && req.query.options ) || {};
+//     const options = ( req.query && req.query.options ) || {};
 
 //     try {
 //       data = await this.model.getById(id, options);

@@ -1,32 +1,35 @@
 import express from 'express';
 import cors from "cors";
 import bodyParser from "body-parser";
-
 import mongoose from "mongoose";
-// import {AccountRoute} from './routes/account-route';
-// import {ActivityRoute} from './routes/activity-route';
-import {config} from './config.js';
+
+import {LogRoute} from './routes/log-route.js';
+import {cfg} from './config.js';
 
 const app = express();
 
-const ROUTE_PREFIX = '/api'; // SERVER.ROUTE_PREFIX;
+const SVC_PATH = cfg.SVC_PATH;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false, limit: "1mb" }));
 app.use(bodyParser.json({ limit: "1mb" }));
 
-// app.use(ROUTE_PREFIX + "/accounts", AccountRoute());
-// app.use(ROUTE_PREFIX + "/activities", ActivityRoute());
+app.get("/wx", (req, res) => {
+    const auth = new AuthController();
+    auth.genWechatToken(req, res);
+});
 
-mongoose.connect(config.DB_CONN, {
+// app.use(SVC_PATH + "/accounts", AccountRoute());
+// app.use(SVC_PATH + "/activities", ActivityRoute());
+
+mongoose.connect(cfg.DB_CONN, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
-// console.log(me.username);
+app.use(SVC_PATH + "/", LogRoute());
 
-
-
-// app.get('/', (req, res) => res.send('Hello World!'))
-
-app.listen(config.PORT, () => console.log(`API listening at http://localhost:${config.PORT}`))
+app.listen(cfg.SVC_PORT, () => {
+    console.log(`svc path: ${SVC_PATH}`);
+    console.log(`API listening at http://localhost:${cfg.SVC_PORT}`);
+})
