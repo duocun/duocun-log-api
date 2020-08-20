@@ -27,7 +27,7 @@ mongoose.connect(cfg.DB_CONN, {
     useUnifiedTopology: true
 });
 
-app.use(SVC_PATH + "/", LogRoute());
+app.use("/", LogRoute());
 
 app.listen(cfg.SVC_PORT, () => {
     console.log(`svc path: ${SVC_PATH}`);
