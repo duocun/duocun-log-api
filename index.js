@@ -14,10 +14,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false, limit: "1mb" }));
 app.use(bodyParser.json({ limit: "1mb" }));
 
-app.get("/wx", (req, res) => {
-    const auth = new AuthController();
-    auth.genWechatToken(req, res);
-});
+// app.get("/wx", (req, res) => {
+//     const auth = new AuthController();
+//     auth.genWechatToken(req, res);
+// });
 
 // app.use(SVC_PATH + "/accounts", AccountRoute());
 // app.use(SVC_PATH + "/activities", ActivityRoute());

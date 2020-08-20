@@ -1,5 +1,5 @@
-import {config} from '../config';
+import {cfg} from '../config';
 
 test('database port', () => {
-    expect(config.DB_PORT).toBe('27017');
+    expect(cfg.DB_PORT).toBe('27017');
 });
